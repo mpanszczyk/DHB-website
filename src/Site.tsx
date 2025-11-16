@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+
 /** Simple gradient fallback if an image fails */
 const FALLBACK =
   "data:image/svg+xml;utf8," +
@@ -668,14 +669,14 @@ function ProjectsSection() {
 
 
 /* ============================ Page ============================ */
-import React from "react";
+
 import "./index.css";
 import { Pencil, Hammer, Home } from "lucide-react";
 
 
 export default function Site() {
-const [openId, setOpenId] = useState<string | null>(null);
-const active = PROJECTS.find((p) => p.id === openId) ?? null;
+
+
 
   return (
     <div className="min-h-screen font-sans text-neutral-800" style={{ scrollBehavior: "smooth" }}>
@@ -856,7 +857,13 @@ const active = PROJECTS.find((p) => p.id === openId) ?? null;
             <h2 className="text-3xl md:text-4xl font-semibold">Ready to Start Your Project?</h2>
             <p className="mt-3 text-white/80">Call (708) 257-0115 or email distinctivebuilders@hotmail.com</p>
           </div>
-          <form name="contact" netlify className="bg-white text-neutral-800 rounded-2xl p-6 grid gap-4">
+<form
+  name="contact"
+  method="POST"
+  data-netlify="true"
+  className="bg-white text-neutral-800 rounded-2xl p-6 grid gap-4"
+>
+
             <input type="hidden" name="form-name" value="contact" />
             <div className="grid md:grid-cols-2 gap-4">
               <input name="first" placeholder="First name" className="border rounded-xl px-3 py-2" />
