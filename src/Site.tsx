@@ -443,11 +443,14 @@ function BAThumb({
 }
 
 // === Renovations cards + modal ==============================================
+
 function RenovationsSection() {
   const [openId, setOpenId] = useState<string | null>(null);
   const active = RENOVATIONS.find((r) => r.id === openId) ?? null;
 
   return (
+   
+
     <section id="renovations" className="bg-neutral-50 border-y">
       <div className="max-w-7xl mx-auto px-4 py-16 md:py-24">
         <h2 className="text-3xl md:text-4xl font-semibold">Before &amp; After Renovations</h2>
@@ -546,14 +549,16 @@ function RenovationsSection() {
 
 
 
-
-
-/* =============================== Projects section =============================== */
+// === Projects grid + modal ===========================
 function ProjectsSection() {
   const [openId, setOpenId] = useState<string | null>(null);
   const active = PROJECTS.find((p) => p.id === openId) ?? null;
 
   return (
+  
+
+
+
     <section id="projects" className="bg-neutral-50 border-y">
       <div className="max-w-7xl mx-auto px-4 py-16 md:py-24">
         <h2 className="text-3xl md:text-4xl font-semibold">Featured Projects</h2>
@@ -673,12 +678,11 @@ function ProjectsSection() {
 import "./index.css";
 import { Pencil, Hammer, Home } from "lucide-react";
 
-
 export default function Site() {
-
-
-
   return (
+   
+
+
     <div className="min-h-screen font-sans text-neutral-800" style={{ scrollBehavior: "smooth" }}>
       {/* Header */}
       <header className="sticky top-0 z-50 bg-white/90 backdrop-blur border-b">
