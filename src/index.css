@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Optional helper to make smooth scrolling between sections */
+html {
+  scroll-behavior: smooth;
+}
+.modal-scroll {
+  -webkit-overflow-scrolling: touch;
+}
