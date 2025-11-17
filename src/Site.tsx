@@ -1,4 +1,6 @@
 import { useState } from "react";
+import "./index.css";
+import { Pencil, Hammer, Home } from "lucide-react";
 
 
 /** Simple gradient fallback if an image fails */
@@ -676,7 +678,7 @@ function ProjectsSection() {
 /* ============================ Page ============================ */
 
 import "./index.css";
-import { Pencil, Hammer, Home } from "lucide-react";
+
 
 export default function Site() {
   return (
@@ -865,10 +867,20 @@ export default function Site() {
   name="contact"
   method="POST"
   data-netlify="true"
+  netlify-honeypot="bot-field"
   className="bg-white text-neutral-800 rounded-2xl p-6 grid gap-4"
 >
 
+
             <input type="hidden" name="form-name" value="contact" />
+            {/* Honeypot for bots */}
+<p className="hidden">
+  <label>
+    Don’t fill this out if you’re human:{" "}
+    <input name="bot-field" />
+  </label>
+</p>
+
             <div className="grid md:grid-cols-2 gap-4">
               <input name="first" placeholder="First name" className="border rounded-xl px-3 py-2" />
               <input name="last" placeholder="Last name" className="border rounded-xl px-3 py-2" />
