@@ -144,34 +144,34 @@ gallery: [
     location: "Jupiter, FL",
     style: "Modern Transitional",
     hero: "/assets/projects/old-trail/old-trail-1.jpg",
- gallery: [
+gallery: [
   {
     src: "/assets/projects/old-trail/old-trail-1.jpg",
-    alt: "Old Trail custom home – front exterior West Indies modern elevation",
+    alt: "Old Trail custom home — front exterior West Indies modern elevation",
   },
   {
     src: "/assets/projects/old-trail/old-trail-2.jpg",
-    alt: "Old Trail custom home – backyard pool and outdoor living",
+    alt: "Old Trail custom home — backyard pool and outdoor living",
   },
   {
     src: "/assets/projects/old-trail/old-trail-3.jpg",
-    alt: "Old Trail great room – open-concept living and kitchen",
+    alt: "Old Trail great room — open-concept living and kitchen",
   },
   {
     src: "/assets/projects/old-trail/old-trail-4.jpg",
-    alt: "Old Trail kitchen – high-end cabinetry and island",
+    alt: "Old Trail kitchen — high-end cabinetry and island",
   },
   {
     src: "/assets/projects/old-trail/old-trail-5.jpg",
-    alt: "Old Trail master suite – bedroom with custom finishes",
+    alt: "Old Trail master suite — bedroom with custom finishes",
   },
   {
     src: "/assets/projects/old-trail/old-trail-6.jpg",
-    alt: "Old Trail bathroom – spa-inspired shower and tub",
+    alt: "Old Trail bathroom — spa-inspired shower and tub",
   },
   {
     src: "/assets/projects/old-trail/old-trail-7.jpg",
-    alt: "Old Trail office / study – custom millwork and built-ins",
+    alt: "Old Trail office / study — custom millwork and built-ins",
   },
   {
     src: "/assets/projects/old-trail/old-trail-8.jpg",
@@ -179,7 +179,7 @@ gallery: [
   },
   {
     src: "/assets/projects/old-trail/old-trail-9.jpg",
-    alt: "Old Trail outdoor living – lanai and seating area",
+    alt: "Old Trail outdoor living — lanai and seating area",
   },
   {
     src: "/assets/projects/old-trail/old-trail-10.jpg",
@@ -189,7 +189,38 @@ gallery: [
     src: "/assets/projects/old-trail/old-trail-11.jpg",
     alt: "Old Trail nighttime exterior view",
   },
+
+  // ⭐ NEW IMAGES (12–18)
+  {
+    src: "/assets/projects/old-trail/old-trail-12.jpg",
+    alt: "Old Trail interior — living room detail",
+  },
+  {
+    src: "/assets/projects/old-trail/old-trail-13.jpg",
+    alt: "Old Trail architectural ceiling detail",
+  },
+  {
+    src: "/assets/projects/old-trail/old-trail-14.jpg",
+    alt: "Old Trail luxury bathroom — glass shower and tile design",
+  },
+  {
+    src: "/assets/projects/old-trail/old-trail-15.jpg",
+    alt: "Old Trail spa bathroom — shower and modern finishes",
+  },
+  {
+    src: "/assets/projects/old-trail/old-trail-16.jpg",
+    alt: "Old Trail bonus room — upstairs retreat",
+  },
+  {
+    src: "/assets/projects/old-trail/old-trail-17.jpg",
+    alt: "Old Trail hallway / loft — modern railing and lighting",
+  },
+  {
+    src: "/assets/projects/old-trail/old-trail-18.jpg",
+    alt: "Old Trail coffered ceiling detail — luxury interior finish",
+  },
 ],
+
 
     facts: [
       { label: "Size", value: "7,200 sq ft" },
