@@ -1,6 +1,9 @@
-import { useState } from "react";
+
+import { useState, useEffect } from "react";
 import "./index.css";
 import { Pencil, Hammer, Home } from "lucide-react";
+import { Link } from "react-router-dom";
+
 
 
 /** Simple gradient fallback if an image fails */
@@ -705,19 +708,31 @@ function ProjectsSection() {
 
 
 
-
 /* ============================ Page ============================ */
 
-import "./index.css";
+type SiteProps = {
+  initialSection?: string; // e.g., "services", "projects", etc.
+};
 
+export default function Site({ initialSection }: SiteProps) {
+  // Scroll to the section if one was provided (for routed pages)
+  useEffect(() => {
+    if (!initialSection) return;
+    const el = document.getElementById(initialSection);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [initialSection]);
 
-export default function Site() {
   return (
-   
-
-
-    <div className="min-h-screen font-sans text-neutral-800" style={{ scrollBehavior: "smooth" }}>
+    <div
+      className="min-h-screen font-sans text-neutral-800"
+      style={{ scrollBehavior: "smooth" }}
+    >
       {/* Header */}
+      ...
+
+
       <header className="sticky top-0 z-50 bg-white/90 backdrop-blur border-b">
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="leading-tight">
@@ -763,10 +778,12 @@ export default function Site() {
 
 
 
-{/* Services */}
+
+{/* ====================== SERVICES (Updated with <Link>) ====================== */}
 <section id="services" className="bg-white">
   <div className="max-w-7xl mx-auto px-4 pt-6 pb-16 md:pt-10 md:pb-24">
-    {/* Logo above the heading */}
+
+    {/* Logo */}
     <div className="flex justify-center mt-1 mb-10">
       <img
         src="/assets/db-logo.png"
@@ -777,20 +794,21 @@ export default function Site() {
 
     <h2 className="text-3xl md:text-4xl font-semibold text-center">Services</h2>
     <p className="mt-2 text-neutral-600 text-center">
-      Design | Renovations | Custom Homes
+      <Link to="/design" className="underline hover:text-black">Design</Link> |
+      <Link to="/renovations" className="underline hover:text-black mx-2">Renovations</Link> |
+      <Link to="/custom-homes" className="underline hover:text-black">Custom Homes</Link>
     </p>
 
-    {/* Service cards */}
     <div className="mt-10 grid gap-6 md:grid-cols-3">
-      {/* Design */}
-      <div className="rounded-2xl border bg-white p-6 shadow-sm transition hover:shadow-md">
+
+      {/* ================= DESIGN CARD ================= */}
+      <Link to="/design" className="rounded-2xl border bg-white p-6 shadow-sm hover:shadow-md transition block">
         <div className="flex justify-center mb-4">
           <Pencil className="h-8 w-8 text-neutral-700" />
         </div>
         <h3 className="text-xl font-semibold text-center">Design</h3>
         <p className="mt-2 text-neutral-600 text-center">
-          Pre-construction, budgets, value engineering, architectural
-          collaboration, and permitting support.
+          Pre-construction planning, budgets, architecture collaboration.
         </p>
         <ul className="mt-3 list-disc pl-5 text-sm text-neutral-600 space-y-1">
           <li>Concept to permit</li>
@@ -798,44 +816,44 @@ export default function Site() {
           <li>Cabinet design & renderings</li>
           <li>Detailed scopes & schedules</li>
         </ul>
-      </div>
+      </Link>
 
-      {/* Renovations */}
-      <div className="rounded-2xl border bg-white p-6 shadow-sm transition hover:shadow-md">
+      {/* ================= RENOVATIONS CARD ================= */}
+      <Link to="/renovations" className="rounded-2xl border bg-white p-6 shadow-sm hover:shadow-md transition block">
         <div className="flex justify-center mb-4">
           <Hammer className="h-8 w-8 text-neutral-700" />
         </div>
         <h3 className="text-xl font-semibold text-center">Renovations</h3>
         <p className="mt-2 text-neutral-600 text-center">
-          Luxury kitchens, baths, additions, outdoor living, and whole-home
-          transformations.
+          Kitchens, baths, additions, outdoor living, whole-home updates.
         </p>
         <ul className="mt-3 list-disc pl-5 text-sm text-neutral-600 space-y-1">
           <li>Occupied-home best practices</li>
           <li>Transparent cost control</li>
           <li>Permit & HOA coordination</li>
         </ul>
-      </div>
+      </Link>
 
-      {/* Custom Homes */}
-      <div className="rounded-2xl border bg-white p-6 shadow-sm transition hover:shadow-md">
+      {/* ================= CUSTOM HOMES CARD ================= */}
+      <Link to="/custom-homes" className="rounded-2xl border bg-white p-6 shadow-sm hover:shadow-md transition block">
         <div className="flex justify-center mb-4">
           <Home className="h-8 w-8 text-neutral-700" />
         </div>
         <h3 className="text-xl font-semibold text-center">Custom Homes</h3>
         <p className="mt-2 text-neutral-600 text-center">
-          Ground-up builds with premium craftsmanship and an owner’s-rep level
-          of communication.
+          Ground-up luxury builds with premium craftsmanship.
         </p>
         <ul className="mt-3 list-disc pl-5 text-sm text-neutral-600 space-y-1">
           <li>Lot analysis & feasibility</li>
           <li>Schedule & trade management</li>
           <li>Concierge punch & closeout</li>
         </ul>
-      </div>
+      </Link>
+
     </div>
   </div>
 </section>
+
 
 
 
