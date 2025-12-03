@@ -915,20 +915,25 @@ export default function Site({ initialSection }: SiteProps) {
 <form
   name="contact"
   method="POST"
+  action="/success"
   data-netlify="true"
   netlify-honeypot="bot-field"
   className="bg-white text-neutral-800 rounded-2xl p-6 grid gap-4"
 >
 
+  {/* identify form for Netlify */}
+  <input type="hidden" name="form-name" value="contact" />
 
-            <input type="hidden" name="form-name" value="contact" />
-            {/* Honeypot for bots */}
-<p className="hidden">
-  <label>
-    Don’t fill this out if you’re human:{" "}
-    <input name="bot-field" />
-  </label>
-</p>
+  {/* Honeypot for bots */}
+  <p className="hidden">
+    <label>
+      Don’t fill this out if you’re human:{" "}
+      <input name="bot-field" />
+    </label>
+  </p>
+
+
+
 
             <div className="grid md:grid-cols-2 gap-4">
               <input name="first" placeholder="First name" className="border rounded-xl px-3 py-2" />
