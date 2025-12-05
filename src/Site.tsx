@@ -916,10 +916,10 @@ function ProjectsSection() {
         Call (708) 257-0115 or email distinctivebuilders@gmail.com, or send us a message using the form.
       </p>
     </div>
-
 <form
   name="contact"
   method="POST"
+  action="/"
   data-netlify="true"
   netlify-honeypot="bot-field"
 >
@@ -986,6 +986,7 @@ function ProjectsSection() {
     </button>
   </div>
 </form>
+
 
 
   </div>
