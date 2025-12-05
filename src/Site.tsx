@@ -1,11 +1,13 @@
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "./index.css";
 import { Pencil, Hammer, Home } from "lucide-react";
 import { Link } from "react-router-dom";
 type SiteProps = {
   initialSection?: string;
 };
+
+export default function Site({ initialSection }: SiteProps) {
 
 
 /** Simple gradient fallback if an image fails */
@@ -978,55 +980,20 @@ function ProjectsSection() {
   </div>
 </section>
 
- 
+      {/* Footer */}
+      <footer className="bg-slate-900 text-slate-100 py-8 mt-12">
+        <div className="max-w-6xl mx-auto px-4 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+          <p className="text-sm">
+            © {new Date().getFullYear()} Distinctive House Builders LLC. All rights reserved.
+          </p>
 
-       {/* Footer */}
-      <footer className="bg-white border-t">
-        <div className="max-w-7xl mx-auto px-4 py-10 grid md:grid-cols-3 gap-6 text-sm text-neutral-600">
-          {/* Company blurb */}
-          <div>
-            <p className="font-semibold text-neutral-800">
-              Distinctive House Builders LLC
-            </p>
-            <p>Licensed & Insured • Florida CBC1267871</p>
-            <p>© {new Date().getFullYear()} All Rights Reserved</p>
-          </div>
-
-          {/* Quick links */}
-          <div>
-            <p className="font-semibold text-neutral-800">Quick Links</p>
-            <ul className="mt-2 space-y-1">
-              <li>
-                <a href="#services" className="hover:underline">
-                  Services
-                </a>
-              </li>
-              <li>
-                <a href="#about" className="hover:underline">
-                  About
-                </a>
-              </li>
-              <li>
-                <a href="#projects" className="hover:underline">
-                  Projects
-                </a>
-              </li>
-              <li>
-                <a href="#contact" className="hover:underline">
-                  Contact
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Follow links */}
-          <div>
-            <p className="font-semibold text-neutral-800">Follow</p>
-            <ul className="mt-2 space-y-1">
+          <div className="flex items-center gap-6">
+            <span className="text-sm">Follow us:</span>
+            <ul className="flex gap-4 text-sm">
               <li>
                 <a
                   className="hover:underline"
-                  href="https://www.instagram.com/distinctivehousebuilders"
+                  href="https://www.instagram.com/distinctivehousebuilders/"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -1047,7 +1014,6 @@ function ProjectsSection() {
           </div>
         </div>
       </footer>
-
     </div>
   );
 }
