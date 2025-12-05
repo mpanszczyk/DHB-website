@@ -917,66 +917,78 @@ function ProjectsSection() {
       </p>
     </div>
 
-    <form
-      name="contact"
-      method="POST"
-      data-netlify="true"
-      netlify-honeypot="bot-field"
-      action="/success.html"
-      className="bg-white text-neutral-800 rounded-2xl p-6 grid gap-4"
+  <form
+  name="contact"
+  method="POST"
+  data-netlify="true"
+  netlify-honeypot="bot-field"
+>
+  {/* Netlify needs this hidden form-name input */}
+  <input type="hidden" name="form-name" value="contact" />
+
+  {/* Honeypot field */}
+  <p className="hidden">
+    <label>
+      Don’t fill this out if you’re human: <input name="bot-field" />
+    </label>
+  </p>
+
+  <div className="grid gap-4">
+    <div>
+      <label className="block text-sm font-medium mb-1">
+        Name
+        <input
+          className="mt-1 w-full border rounded-md px-3 py-2"
+          type="text"
+          name="name"
+          required
+        />
+      </label>
+    </div>
+
+    <div>
+      <label className="block text-sm font-medium mb-1">
+        Email
+        <input
+          className="mt-1 w-full border rounded-md px-3 py-2"
+          type="email"
+          name="email"
+          required
+        />
+      </label>
+    </div>
+
+    <div>
+      <label className="block text-sm font-medium mb-1">
+        Phone
+        <input
+          className="mt-1 w-full border rounded-md px-3 py-2"
+          type="tel"
+          name="phone"
+        />
+      </label>
+    </div>
+
+    <div>
+      <label className="block text-sm font-medium mb-1">
+        Project details
+        <textarea
+          className="mt-1 w-full border rounded-md px-3 py-2"
+          name="message"
+          rows={4}
+        />
+      </label>
+    </div>
+
+    <button
+      type="submit"
+      className="mt-2 inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-semibold border"
     >
-      {/* Identify form for Netlify */}
-      <input type="hidden" name="form-name" value="contact" />
+      Submit
+    </button>
+  </div>
+</form>
 
-      {/* Honeypot for bots */}
-      <p className="hidden">
-        <label>
-          Don’t fill this out if you’re human:{" "}
-          <input name="bot-field" />
-        </label>
-      </p>
-
-      <div className="grid md:grid-cols-2 gap-4">
-        <input
-          name="first"
-          placeholder="First name"
-          className="border rounded-xl px-3 py-2"
-          required
-        />
-        <input
-          name="last"
-          placeholder="Last name"
-          className="border rounded-xl px-3 py-2"
-          required
-        />
-      </div>
-
-      <input
-        type="email"
-        name="email"
-        placeholder="Email"
-        className="border rounded-xl px-3 py-2"
-        required
-      />
-      <input
-        type="tel"
-        name="phone"
-        placeholder="Phone"
-        className="border rounded-xl px-3 py-2"
-      />
-      <textarea
-        name="message"
-        placeholder="Project details"
-        rows={5}
-        className="border rounded-xl px-3 py-2"
-      />
-      <button
-        type="submit"
-        className="mt-2 px-5 py-3 rounded-xl bg-black text-white"
-      >
-        Send
-      </button>
-    </form>
   </div>
 </section>
 
@@ -991,14 +1003,15 @@ function ProjectsSection() {
             <span className="text-sm">Follow us:</span>
             <ul className="flex gap-4 text-sm">
               <li>
-                <a
-                  className="hover:underline"
-                  href="https://www.instagram.com/distinctivehousebuilders/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Instagram
-                </a>
+              <a
+  className="hover:underline"
+  href="https://www.instagram.com/distinctivehomebuilderllc/"
+  target="_blank"
+  rel="noreferrer"
+>
+  Instagram
+</a>
+
               </li>
               <li>
                 <a
