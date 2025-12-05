@@ -8,53 +8,6 @@ type SiteProps = {
 };
 
 
-export default function Site({ initialSection }: SiteProps) {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [submitError, setSubmitError] = useState<string | null>(null);
-
- const handleContactSubmit = async (
-  e: React.FormEvent<HTMLFormElement>
-) => {
-  e.preventDefault();               // stop normal form navigation
-  setIsSubmitting(true);
-  setSubmitError(null);
-
-  const form = e.currentTarget;
-  const formData = new FormData(form);
-
-  // Make sure Netlify sees the form name
-  if (!formData.has("form-name")) {
-    formData.append("form-name", "contact");
-  }
-
-  try {
-    const response = await fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams(formData as any).toString(),
-    });
-
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-
-    setIsSubmitted(true);
-    form.reset();
-
-    // OPTIONAL: send the user to the success page we created
-    window.location.href = "/success.html";
-  } catch (err) {
-    console.error(err);
-    setSubmitError("Something went wrong. Please try again.");
-  } finally {
-    setIsSubmitting(false);
-  }
-};
-
-
-
-
 /** Simple gradient fallback if an image fails */
 const FALLBACK =
   "data:image/svg+xml;utf8," +
@@ -952,67 +905,80 @@ function ProjectsSection() {
 
 
 
-      {/* Contact */}
-      <section id="contact" className="bg-black text-white">
-        <div className="max-w-7xl mx-auto px-4 py-16 md:py-20 grid md:grid-cols-2 gap-10 items-center">
-          <div>
-            <h2 className="text-3xl md:text-4xl font-semibold">Ready to Start Your Project?</h2>
-            <p className="mt-3 text-white/80">Call (708) 257-0115 or email distinctivebuilders@hotmail.com</p>
-          </div>
-=<form
-  name="contact"
-  method="POST"
-  data-netlify="true"
-  data-netlify-honeypot="bot-field"
-  onSubmit={handleContactSubmit}
-  className="bg-white text-neutral-800 rounded-2xl p-6 grid gap-4"
->
+ {/* Contact */}
+<section id="contact" className="bg-black text-white">
+  <div className="max-w-7xl mx-auto px-4 py-16 md:py-20 grid md:grid-cols-2 gap-10 items-start">
+    <div>
+      <h2 className="text-3xl md:text-4xl font-semibold">Ready to Start Your Project?</h2>
+      <p className="mt-3 text-white/80">
+        Call (708) 257-0115 or email distinctivebuilders@gmail.com, or send us a message using the form.
+      </p>
+    </div>
 
+    <form
+      name="contact"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      action="/success.html"
+      className="bg-white text-neutral-800 rounded-2xl p-6 grid gap-4"
+    >
+      {/* Identify form for Netlify */}
+      <input type="hidden" name="form-name" value="contact" />
 
+      {/* Honeypot for bots */}
+      <p className="hidden">
+        <label>
+          Don’t fill this out if you’re human:{" "}
+          <input name="bot-field" />
+        </label>
+      </p>
 
+      <div className="grid md:grid-cols-2 gap-4">
+        <input
+          name="first"
+          placeholder="First name"
+          className="border rounded-xl px-3 py-2"
+          required
+        />
+        <input
+          name="last"
+          placeholder="Last name"
+          className="border rounded-xl px-3 py-2"
+          required
+        />
+      </div>
 
-  {/* identify form for Netlify */}
-  <input type="hidden" name="form-name" value="contact" />
+      <input
+        type="email"
+        name="email"
+        placeholder="Email"
+        className="border rounded-xl px-3 py-2"
+        required
+      />
+      <input
+        type="tel"
+        name="phone"
+        placeholder="Phone"
+        className="border rounded-xl px-3 py-2"
+      />
+      <textarea
+        name="message"
+        placeholder="Project details"
+        rows={5}
+        className="border rounded-xl px-3 py-2"
+      />
+      <button
+        type="submit"
+        className="mt-2 px-5 py-3 rounded-xl bg-black text-white"
+      >
+        Send
+      </button>
+    </form>
+  </div>
+</section>
 
-  {/* Honeypot for bots */}
-  <p className="hidden">
-    <label>
-      Don’t fill this out if you’re human:{" "}
-      <input name="bot-field" />
-    </label>
-  </p>
-
-            <div className="grid md:grid-cols-2 gap-4">
-              <input name="first" placeholder="First name" className="border rounded-xl px-3 py-2" />
-              <input name="last" placeholder="Last name" className="border rounded-xl px-3 py-2" />
-            </div>
-            <input name="email" type="email" placeholder="Email" className="border rounded-xl px-3 py-2" />
-            <input name="phone" placeholder="Phone" className="border rounded-xl px-3 py-2" />
-            <textarea name="message" placeholder="Project details" rows={5} className="border rounded-xl px-3 py-2" />
-         <button
-  type="submit"
-  className="mt-2 px-5 py-3 rounded-xl bg-black text-white"
-  disabled={isSubmitting}
->
-  {isSubmitting ? "Sending..." : "Send"}
-</button>
-
-{isSubmitted && (
-  <p className="mt-2 text-sm text-green-600">
-    Thank you for reaching out. We received your inquiry and will be getting
-    back to you shortly.
-  </p>
-)}
-
-{submitError && (
-  <p className="mt-2 text-sm text-red-600">
-    {submitError}
-  </p>
-)}
-
-          </form>
-        </div>
-      </section>
+ 
 
        {/* Footer */}
       <footer className="bg-white border-t">
