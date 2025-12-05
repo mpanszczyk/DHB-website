@@ -1,8 +1,39 @@
 
-import { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./index.css";
 import { Pencil, Hammer, Home } from "lucide-react";
 import { Link } from "react-router-dom";
+
+export default function Site({ initialSection }: SiteProps) {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+
+  const handleContactSubmit = async (
+    e: React.FormEvent<HTMLFormElement>
+  ) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitError(null);
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData as any).toString(),
+      });
+
+      setIsSubmitted(true);
+      form.reset();
+    } catch (err) {
+      setSubmitError("Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
 
 
@@ -915,11 +946,12 @@ export default function Site({ initialSection }: SiteProps) {
 <form
   name="contact"
   method="POST"
-  action="/success.html"
   data-netlify="true"
   netlify-honeypot="bot-field"
+  onSubmit={handleContactSubmit}
   className="bg-white text-neutral-800 rounded-2xl p-6 grid gap-4"
 >
+
 
 
   {/* identify form for Netlify */}
@@ -940,7 +972,27 @@ export default function Site({ initialSection }: SiteProps) {
             <input name="email" type="email" placeholder="Email" className="border rounded-xl px-3 py-2" />
             <input name="phone" placeholder="Phone" className="border rounded-xl px-3 py-2" />
             <textarea name="message" placeholder="Project details" rows={5} className="border rounded-xl px-3 py-2" />
-            <button className="mt-2 px-5 py-3 rounded-xl bg-black text-white">Send</button>
+         <button
+  type="submit"
+  className="mt-2 px-5 py-3 rounded-xl bg-black text-white"
+  disabled={isSubmitting}
+>
+  {isSubmitting ? "Sending..." : "Send"}
+</button>
+
+{isSubmitted && (
+  <p className="mt-2 text-sm text-green-600">
+    Thank you for reaching out. We received your inquiry and will be getting
+    back to you shortly.
+  </p>
+)}
+
+{submitError && (
+  <p className="mt-2 text-sm text-red-600">
+    {submitError}
+  </p>
+)}
+
           </form>
         </div>
       </section>
