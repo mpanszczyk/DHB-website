@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./index.css";
 import { Pencil, Hammer, Home } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -13,31 +13,45 @@ export default function Site({ initialSection }: SiteProps) {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
 
-  const handleContactSubmit = async (
-    e: React.FormEvent<HTMLFormElement>
-  ) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitError(null);
+ const handleContactSubmit = async (
+  e: React.FormEvent<HTMLFormElement>
+) => {
+  e.preventDefault();               // stop normal form navigation
+  setIsSubmitting(true);
+  setSubmitError(null);
 
-    const form = e.currentTarget;
-    const formData = new FormData(form);
+  const form = e.currentTarget;
+  const formData = new FormData(form);
 
-    try {
-      await fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData as any).toString(),
-      });
+  // Make sure Netlify sees the form name
+  if (!formData.has("form-name")) {
+    formData.append("form-name", "contact");
+  }
 
-      setIsSubmitted(true);
-      form.reset();
-    } catch (err) {
-      setSubmitError("Something went wrong. Please try again.");
-    } finally {
-      setIsSubmitting(false);
+  try {
+    const response = await fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(formData as any).toString(),
+    });
+
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
     }
-  };
+
+    setIsSubmitted(true);
+    form.reset();
+
+    // OPTIONAL: send the user to the success page we created
+    window.location.href = "/success.html";
+  } catch (err) {
+    console.error(err);
+    setSubmitError("Something went wrong. Please try again.");
+  } finally {
+    setIsSubmitting(false);
+  }
+};
+
 
 
 
@@ -945,14 +959,15 @@ function ProjectsSection() {
             <h2 className="text-3xl md:text-4xl font-semibold">Ready to Start Your Project?</h2>
             <p className="mt-3 text-white/80">Call (708) 257-0115 or email distinctivebuilders@hotmail.com</p>
           </div>
-<form
+=<form
   name="contact"
   method="POST"
   data-netlify="true"
-  netlify-honeypot="bot-field"
+  data-netlify-honeypot="bot-field"
   onSubmit={handleContactSubmit}
   className="bg-white text-neutral-800 rounded-2xl p-6 grid gap-4"
 >
+
 
 
 
