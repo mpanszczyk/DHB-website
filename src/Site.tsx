@@ -917,16 +917,14 @@ function ProjectsSection() {
       </p>
     </div>
 
-  <form
+<form
   name="contact"
   method="POST"
   data-netlify="true"
   netlify-honeypot="bot-field"
 >
-  {/* Netlify needs this hidden form-name input */}
   <input type="hidden" name="form-name" value="contact" />
 
-  {/* Honeypot field */}
   <p className="hidden">
     <label>
       Don’t fill this out if you’re human: <input name="bot-field" />
@@ -938,7 +936,7 @@ function ProjectsSection() {
       <label className="block text-sm font-medium mb-1">
         Name
         <input
-          className="mt-1 w-full border rounded-md px-3 py-2"
+          className="mt-1 w-full border rounded-md px-3 py-2 bg-white text-slate-900 placeholder-slate-500"
           type="text"
           name="name"
           required
@@ -950,7 +948,7 @@ function ProjectsSection() {
       <label className="block text-sm font-medium mb-1">
         Email
         <input
-          className="mt-1 w-full border rounded-md px-3 py-2"
+          className="mt-1 w-full border rounded-md px-3 py-2 bg-white text-slate-900 placeholder-slate-500"
           type="email"
           name="email"
           required
@@ -962,7 +960,7 @@ function ProjectsSection() {
       <label className="block text-sm font-medium mb-1">
         Phone
         <input
-          className="mt-1 w-full border rounded-md px-3 py-2"
+          className="mt-1 w-full border rounded-md px-3 py-2 bg-white text-slate-900 placeholder-slate-500"
           type="tel"
           name="phone"
         />
@@ -973,7 +971,7 @@ function ProjectsSection() {
       <label className="block text-sm font-medium mb-1">
         Project details
         <textarea
-          className="mt-1 w-full border rounded-md px-3 py-2"
+          className="mt-1 w-full border rounded-md px-3 py-2 bg-white text-slate-900 placeholder-slate-500"
           name="message"
           rows={4}
         />
@@ -982,12 +980,13 @@ function ProjectsSection() {
 
     <button
       type="submit"
-      className="mt-2 inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-semibold border"
+      className="mt-2 inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-semibold border border-white hover:bg-white hover:text-black transition"
     >
       Submit
     </button>
   </div>
 </form>
+
 
   </div>
 </section>
