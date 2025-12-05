@@ -1,8 +1,12 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./index.css";
 import { Pencil, Hammer, Home } from "lucide-react";
 import { Link } from "react-router-dom";
+type SiteProps = {
+  initialSection?: string;
+};
+
 
 export default function Site({ initialSection }: SiteProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -741,11 +745,9 @@ function ProjectsSection() {
 
 /* ============================ Page ============================ */
 
-type SiteProps = {
-  initialSection?: string; // e.g., "services", "projects", etc.
-};
 
-export default function Site({ initialSection }: SiteProps) {
+
+
   // Scroll to the section if one was provided (for routed pages)
   useEffect(() => {
     if (!initialSection) return;
@@ -997,32 +999,74 @@ export default function Site({ initialSection }: SiteProps) {
         </div>
       </section>
 
-      {/* Footer */}
+       {/* Footer */}
       <footer className="bg-white border-t">
         <div className="max-w-7xl mx-auto px-4 py-10 grid md:grid-cols-3 gap-6 text-sm text-neutral-600">
+          {/* Company blurb */}
           <div>
-            <p className="font-semibold text-neutral-800">Distinctive House Builders LLC</p>
-            <p>Licensed & Insured • Florida CBC1267817</p>
+            <p className="font-semibold text-neutral-800">
+              Distinctive House Builders LLC
+            </p>
+            <p>Licensed & Insured • Florida CBC1267871</p>
             <p>© {new Date().getFullYear()} All Rights Reserved</p>
           </div>
+
+          {/* Quick links */}
           <div>
             <p className="font-semibold text-neutral-800">Quick Links</p>
             <ul className="mt-2 space-y-1">
-              <li><a href="#services" className="hover:underline">Services</a></li>
-              <li><a href="#about" className="hover:underline">About</a></li>
-              <li><a href="#projects" className="hover:underline">Projects</a></li>
-              <li><a href="#contact" className="hover:underline">Contact</a></li>
+              <li>
+                <a href="#services" className="hover:underline">
+                  Services
+                </a>
+              </li>
+              <li>
+                <a href="#about" className="hover:underline">
+                  About
+                </a>
+              </li>
+              <li>
+                <a href="#projects" className="hover:underline">
+                  Projects
+                </a>
+              </li>
+              <li>
+                <a href="#contact" className="hover:underline">
+                  Contact
+                </a>
+              </li>
             </ul>
           </div>
+
+          {/* Follow links */}
           <div>
             <p className="font-semibold text-neutral-800">Follow</p>
             <ul className="mt-2 space-y-1">
-              <li><a className="hover:underline" href="https://www.instagram.com/distinctivehomebuilderllc/" target="_blank" rel="noreferrer">Instagram</a></li>
-              <li><a className="hover:underline" href="https://facebook.com" target="_blank" rel="noreferrer">Facebook</a></li>
+              <li>
+                <a
+                  className="hover:underline"
+                  href="https://www.instagram.com/distinctivehousebuilders"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Instagram
+                </a>
+              </li>
+              <li>
+                <a
+                  className="hover:underline"
+                  href="https://facebook.com"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Facebook
+                </a>
+              </li>
             </ul>
           </div>
         </div>
       </footer>
+
     </div>
   );
 }
