@@ -10,7 +10,17 @@
   </head>
   <body>
     <!-- Hidden Netlify form to register the form on build -->
-    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+    <form
+      name="contact"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      hidden
+    >
+      <!-- Netlify form-name -->
+      <input type="hidden" name="form-name" value="contact" />
+
+      <!-- Honeypot -->
       <p>
         <label>
           Don’t fill this out if you're human:
@@ -29,5 +39,4 @@
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
-
-
+</html>
